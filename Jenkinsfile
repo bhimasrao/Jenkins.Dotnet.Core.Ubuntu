@@ -1,7 +1,6 @@
 pipeline {
     agent { node { label 'slave_new' } }
     
-        parameters { choice(choices: 'dev\nqa', description: 'What environment?', name: 'DEPLOY_TO') } 
         
         stages { 
 
@@ -13,7 +12,7 @@ pipeline {
 
           $class: 'GitSCM', 
 
-          branches: [[name: '*/master']], 
+          branches: [[name: '*/qa']], 
 
           userRemoteConfigs: [[credentialsId: '901eea44-a582-448f-997d-7016c48363e5', 
 
@@ -24,6 +23,17 @@ pipeline {
       } 
 
     } 
+      
+            stage('build') {
+                steps { 
+sh 'sudo systemctl stop test.service'
+sh 'sudo systemctl stop nginx'
+sh 'sudo dotnet publish --configuration release'
+sh 'sudo systemctl start test.service'
+sh 'sudo systemctl start nginx'
+                }
+            }
+            
     
     }
     
