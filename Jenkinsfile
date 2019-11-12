@@ -26,11 +26,11 @@ pipeline {
       
             stage('build') {
                 steps { 
-sudo systemctl stop test.service
-sudo systemctl stop nginx
-sudo dotnet publish --configuration release
-sudo systemctl start test.service
-sudo systemctl start nginx
+sh 'sudo systemctl stop test.service'
+sh 'sudo systemctl stop nginx'
+sh 'sudo dotnet publish --configuration release'
+sh 'sudo systemctl start test.service'
+sh 'sudo systemctl start nginx'
                 }
             }
             
