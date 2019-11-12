@@ -31,7 +31,7 @@ sh 'sudo systemctl stop nginx'
 sh 'sudo dotnet publish --configuration release'
 sh 'sudo systemctl start test.service'
 sh 'sudo systemctl start nginx'
-                    sh 'sudo systemctl status nginx'
+                   
                 }
             }
             
