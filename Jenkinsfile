@@ -12,7 +12,7 @@ pipeline {
 
           $class: 'GitSCM', 
 
-          branches: [[name: '*/master']], 
+          branches: [[name: '*/dev']], 
 
           userRemoteConfigs: [[credentialsId: '901eea44-a582-448f-997d-7016c48363e5', 
 
