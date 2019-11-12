@@ -1,7 +1,7 @@
 pipeline {
     agent { node { label 'slave_new' } }
     
-        parameters { choice(choices: 'dev\nqa', description: 'What environment?', name: 'DEPLOY_TO') } 
+        parameters { choice(choices: 'dev\nqa', description: 'What environment?', name: 'Branchname') } 
         
         stages { 
 
