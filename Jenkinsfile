@@ -38,4 +38,17 @@ sh 'sudo systemctl start nginx'
     
     }
     
+    post {  
+ success { 
+        mail to: 'amarender.busani9@gmail.com',
+          subject: "Job Success:  '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+          body: "Check console output at '${env.BUILD_URL}' for furthur details"    
+              }    
+               failure { 
+        mail to: 'amarender.busani9@gmail.com',
+          subject: "Job Failed:  '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+          body: "Check console output at '${env.BUILD_URL}' for furthur details" 
+              } 
+    }
+    
     }
