@@ -39,7 +39,7 @@ sh 'sudo systemctl start nginx'
     
     }
     
-    }
+    
     
 post {  
  success { 
@@ -53,3 +53,4 @@ post {
           body: "Check console output at '${env.BUILD_URL}' for furthur details" 
               } 
     }
+}
